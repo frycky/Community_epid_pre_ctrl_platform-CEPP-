@@ -8,6 +8,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 
 import io.swagger.annotations.ApiModel;
 
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,20 +23,24 @@ import lombok.Setter;
 @Getter
 @Setter
 @TableName("health_code")
-@ApiModel(value = "HealthCode对象", description = "")
+@ApiModel(value = "HealthCode对象", description = "健康码表")
 public class HealthCode extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
 
+    @ApiModelProperty("主键")
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
+    @ApiModelProperty("申请人姓名")
     @TableField("name")
     private String name;
 
+    @ApiModelProperty("图片")
     @TableField("health_certificate")
     private String healthCertificate;
 
+    @ApiModelProperty("状态")
     @TableField("status")
     private Integer status;
 
