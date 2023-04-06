@@ -8,6 +8,8 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
 import java.time.LocalDateTime;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 
 import io.swagger.annotations.ApiModelProperty;
@@ -26,7 +28,7 @@ import lombok.Setter;
 @Setter
 @TableName("user_info")
 @ApiModel(value = "UserInfo对象", description = "用户信息表")
-public class UserInfo extends BaseEntity {
+public class UserInfo{
 
     private static final long serialVersionUID = 1L;
 
@@ -47,8 +49,8 @@ public class UserInfo extends BaseEntity {
     private String email;
 
     @ApiModelProperty("创建时间")
-    @TableField(value = "create_time", fill = FieldFill.INSERT)
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    @TableField(value = "create_time",fill = FieldFill.INSERT)
     private LocalDateTime createTime;
-
 
 }
