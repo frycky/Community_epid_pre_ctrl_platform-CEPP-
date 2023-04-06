@@ -15,6 +15,9 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.validator.constraints.Length;
+
+import javax.validation.constraints.NotBlank;
 
 /**
  * <p>
@@ -36,14 +39,19 @@ public class UserInfo{
     @TableId(value = "user_id", type = IdType.AUTO)
     private Integer userId;
 
+    @NotBlank(message = "用户名不能为空")
+    @Length(min = 5,max = 20,message = "此处可以自定义报错信息")
     @ApiModelProperty("用户名")
     @TableField("username")
     private String username;
 
+    @NotBlank(message = "密码不能为空")
+    @Length(min = 8,max = 100,message = "此处可以自定义报错信息")
     @ApiModelProperty("密码")
     @TableField("password")
     private String password;
 
+    @NotBlank(message = "邮箱不能为空")
     @ApiModelProperty("邮箱")
     @TableField("email")
     private String email;
