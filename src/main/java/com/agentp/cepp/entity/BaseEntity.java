@@ -2,7 +2,10 @@ package com.agentp.cepp.entity;
 
 import lombok.Data;
 
+import java.io.Serializable;
+
 @Data
-public class BaseEntity {
+public class BaseEntity implements Serializable {
+
 
 }

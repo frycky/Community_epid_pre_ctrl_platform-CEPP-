@@ -1,6 +1,7 @@
 package com.agentp.cepp.entity;
 
 
+import com.agentp.cepp.enums.StatusType;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -42,7 +43,7 @@ public class HealthCode extends BaseEntity {
 
     @ApiModelProperty("状态")
     @TableField("status")
-    private Integer status;
+    private StatusType status;
 
 
 }

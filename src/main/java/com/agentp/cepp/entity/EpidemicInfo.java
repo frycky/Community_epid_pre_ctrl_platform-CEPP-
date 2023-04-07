@@ -1,12 +1,11 @@
 package com.agentp.cepp.entity;
 
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 import io.swagger.annotations.ApiModel;
 
 import io.swagger.annotations.ApiModelProperty;
@@ -38,8 +37,8 @@ public class EpidemicInfo extends BaseEntity {
     private String location;
 
     @ApiModelProperty("日期")
-    @TableField("date")
-    private LocalDate date;
+    @TableField(value = "date",fill = FieldFill.INSERT)
+    private LocalDateTime date;
 
     @ApiModelProperty("详细信息")
     @TableField("description")
