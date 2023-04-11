@@ -1,16 +1,19 @@
 package com.agentp.cepp.controller;
 
 
+import com.agentp.cepp.common.PageVO;
 import com.agentp.cepp.common.Result;
 import com.agentp.cepp.dto.PageInfo;
 import com.agentp.cepp.dto.UserLoginDto;
 import com.agentp.cepp.entity.UserInfo;
 import com.agentp.cepp.exception.CustomException;
 import com.agentp.cepp.utils.JwtUtils;
+import com.agentp.cepp.vo.UserInfoVO;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.BeanUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,8 +40,8 @@ public class UserInfoController extends BaseController {
         return userInfoService.list();
     }
 
-    @PostMapping("/page")
-    public Result<?> findPage(@RequestBody PageInfo pageInfo){
+    @PostMapping("/page1")
+    public Result findPage1(@RequestBody PageInfo pageInfo){
         Page<UserInfo> page = userInfoService.page(
                 new Page<>(
                         pageInfo.getPageNum(),
@@ -47,21 +50,31 @@ public class UserInfoController extends BaseController {
         );
         return Result.success(page);
     }
+    @PostMapping("/page2")
+    public Result findPage2(@RequestBody PageInfo pageInfo){
+        Page<UserInfo> page = userInfoService.page(
+                new Page<>(
+                        pageInfo.getPageNum(),
+                        pageInfo.getPageSize()
+                )
+        );
+        return new Result().success1(new PageVO(page));
+    }
 
     @PostMapping("/save")
-    public Result<?> save(@Validated @RequestBody UserInfo userInfo){
+    public Result save(@Validated @RequestBody UserInfo userInfo){
         userInfoService.saveOrUpdate(userInfo);
         return Result.success();
     }
 
     @PostMapping("/delBatch")
-    public Result<?> delBatch(@RequestBody List<Integer> ids){
+    public Result delBatch(@RequestBody List<Integer> ids){
         userInfoService.removeByIds(ids);
         return Result.success();
     }
 
     @GetMapping("/getlogin")
-    public Result<?> getLogin(@RequestParam("username") String username,@RequestParam("password") String password){
+    public Result getLogin(@RequestParam("username") String username,@RequestParam("password") String password){
         LambdaQueryWrapper<UserInfo> wrapper = new LambdaQueryWrapper<>();
         wrapper.eq(UserInfo::getUsername,username)
                 .eq(UserInfo::getPassword,password)
@@ -83,8 +96,9 @@ public class UserInfoController extends BaseController {
         }
 
     }
+    //TODO todo功能测试
     @PostMapping("/postlogin")
-    public Result<?> postLogin(@Validated @RequestBody UserLoginDto userLoginDto){
+    public Result postLogin(@Validated @RequestBody UserLoginDto userLoginDto){
         LambdaQueryWrapper<UserInfo> wrapper = new LambdaQueryWrapper<>();
         wrapper.eq(UserInfo::getUsername,userLoginDto.getUsername())
                 .eq(UserInfo::getPassword,userLoginDto.getPassword())
@@ -105,4 +119,16 @@ public class UserInfoController extends BaseController {
             throw new CustomException("请检查用户名密码是否正确");
         }
     }
+
+
+    //需求，通过用户id查询出用户相关信息用于前端展示
+    @GetMapping("/getById")
+    public Result getById(@RequestParam("id") Integer id){
+        UserInfo byid = userInfoService.getById(id);
+        UserInfoVO userInfoVO = new UserInfoVO();
+        BeanUtils.copyProperties(byid,userInfoVO);
+        return Result.success(userInfoVO);
+    }
+
+
 }

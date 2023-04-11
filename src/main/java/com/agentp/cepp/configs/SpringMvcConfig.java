@@ -17,18 +17,21 @@ public class SpringMvcConfig implements WebMvcConfigurer {
                 .addPathPatterns("/**")
                 //允许直接访问的接口
                 .excludePathPatterns(
-//                        "/user/login",
-//                        "/article/page",
-//                        "/article/detail",
+                        "/user-info/page1",
+                        "/user-info/page2",
+                        "/article/detail",
+                        //TODO 开发暂时允许访问
+                        "/doc.html",
+                        "/user-info/getById",
 //
-//                        "/swagger-ui/**",
-//                        "/swagger-ui.html",
-//                        "/swagger-resources/**",
-//                        "/images/**",
-//                        "/webjars/**",
-//                        "/v2/api-docs",
-//                        "/configuration/ui",
-//                        "/configuration/security"
+                        "/swagger-ui/**",
+                        "/swagger-ui.html",
+                        "/swagger-resources/**",
+                        "/images/**",
+                        "/webjars/**",
+                        "/v2/api-docs",
+                        "/configuration/ui",
+                        "/configuration/security"
                 );
     }
 

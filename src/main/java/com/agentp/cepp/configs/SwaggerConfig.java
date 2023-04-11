@@ -18,6 +18,6 @@ public class SwaggerConfig {
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.agentp.cepp.controller"))
                 .paths(PathSelectors.any())
-                .build().apiInfo(new ApiInfoBuilder().title("CEEP社区疫情防控系统").version("v1.0").build());
+                .build().apiInfo(new ApiInfoBuilder().title("CEPP社区疫情防控系统").version("v1.0").build());
     }
 }

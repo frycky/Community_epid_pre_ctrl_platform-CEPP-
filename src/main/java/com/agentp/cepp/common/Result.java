@@ -12,13 +12,16 @@ public class Result<T> {
 
     private Integer code;
     private String msg;
-    private Object data;
+    private T data;
 
     public static Result success(){
         return new Result(200,"操作成功",null);
     }
     public static Result success(Object data){
         return new Result(200,"操作成功", data);
+    }
+    public Result success1(T data){
+        return new Result(200,"操作成功",data);
     }
     public static Result error(String msg){
         return new Result(500,msg,null);
