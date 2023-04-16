@@ -98,7 +98,7 @@ public class JwtUtils {
      */
     public static String generateToken(UserInfo userInfo) {
         Map<String, Object> map = new HashMap<>();
-        map.put("userId", userInfo.getUserId());
+        map.put("id", userInfo.getId());
         map.put("username", userInfo.getUsername());
         map.put("password", userInfo.getPassword());
         map.put("email", userInfo.getEmail());

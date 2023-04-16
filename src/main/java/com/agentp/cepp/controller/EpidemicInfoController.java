@@ -18,4 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/epidemic-info")
 public class EpidemicInfoController extends BaseController {
 
+
+
 }

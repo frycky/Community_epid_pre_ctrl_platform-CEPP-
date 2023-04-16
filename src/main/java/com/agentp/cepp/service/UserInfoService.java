@@ -2,6 +2,7 @@ package com.agentp.cepp.service;
 
 import com.agentp.cepp.entity.UserInfo;
 import com.baomidou.mybatisplus.extension.service.IService;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * <p>

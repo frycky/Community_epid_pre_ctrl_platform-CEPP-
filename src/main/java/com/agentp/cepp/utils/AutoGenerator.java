@@ -28,10 +28,11 @@ public class AutoGenerator {
 
     public static void main(String[] args) {
         List<String> tables = new ArrayList<>();
-        tables.add("user_info");
-        tables.add("resident_info");
-        tables.add("health_code");
-        tables.add("epidemic_info");
+//        tables.add("user_info");
+//        tables.add("resident_info");
+//        tables.add("health_code");
+//        tables.add("epidemic_info");
+        tables.add("word_info");
 
 
         FastAutoGenerator.create(URL, USERNAME, PASSWORD)

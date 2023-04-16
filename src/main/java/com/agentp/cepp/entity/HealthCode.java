@@ -29,9 +29,6 @@ public class HealthCode extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty("主键")
-    @TableId(value = "id", type = IdType.AUTO)
-    private Integer id;
 
     @ApiModelProperty("申请人姓名")
     @TableField("name")

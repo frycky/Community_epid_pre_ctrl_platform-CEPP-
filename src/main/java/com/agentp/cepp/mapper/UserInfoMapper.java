@@ -20,7 +20,7 @@ public interface UserInfoMapper extends BaseMapper<UserInfo> {
     /**
      * 批量插入，仅适用于mysql
      */
-    Integer insertBatchSomeColum(Collection<UserInfo> entityList);
+//    Integer insertBatchSomeColum(Collection<UserInfo> entityList);
 
 
 }
