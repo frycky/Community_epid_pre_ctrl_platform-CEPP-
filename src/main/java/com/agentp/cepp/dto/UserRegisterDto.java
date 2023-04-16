@@ -1,5 +1,6 @@
 package com.agentp.cepp.dto;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
@@ -8,7 +9,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 @Data
-public class UserRegisterDto {
+public class UserRegisterDto extends PageInfo{
     @NotBlank(message = "用户名不能为空")
     @Length(min = 1,max = 20,message = "用户名在1-20位之间")
     @ApiModelProperty("用户名")
@@ -23,4 +24,5 @@ public class UserRegisterDto {
     @NotBlank(message = "邮箱不能为空")
     @ApiModelProperty("邮箱")
     private String email;
+
 }

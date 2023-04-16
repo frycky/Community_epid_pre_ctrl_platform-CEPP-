@@ -12,6 +12,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author Fry_code
  * @since 2023-04-20
  */
-public interface WordInfoService extends IService<WordInfo> {
+public interface CategoryInfoService extends IService<CategoryInfo> {
 
 }

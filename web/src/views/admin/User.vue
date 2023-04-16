@@ -2,7 +2,7 @@
   <div>
     <div class="pb10px">
       <!--@input="handleSearch"与@click="handleSearch"相绑定，实现输入即搜索-->
-      <el-input v-model="searchForm.title" @input="handleSearch" class="input" clearable placeholder="请输入标题"
+      <el-input v-model="searchForm.username" @input="handleSearch" class="input" clearable placeholder="请输入用户名"
                 size="small"></el-input>
       <el-button type="primary" icon="el-icon-search" size="small" class="mr10px" @click="handleSearch">搜索</el-button>
     </div>
@@ -29,14 +29,9 @@
       </el-table-column>
       <el-table-column
           prop="createTime"
-          label="发布时间"
+          label="创建时间"
           width="170"
           :formatter="formatDateC">
-      </el-table-column>
-      <el-table-column
-          prop="title"
-          label="标题"
-          show-overflow-tooltip>
       </el-table-column>
       <el-table-column
           prop="username"
@@ -44,15 +39,25 @@
           show-overflow-tooltip>
       </el-table-column>
       <el-table-column
-          prop="status"
-          label="状态"
+          prop="email"
+          label="邮箱"
+          show-overflow-tooltip>
+      </el-table-column>
+      <el-table-column
+          prop="permission"
+          label="权限"
           show-overflow-tooltip>
       </el-table-column>
       <el-table-column label="操作">
         <template slot-scope="scope">
           <el-button
               size="mini"
-              @click="handleEdit(scope.$index, scope.row)">详情
+              @click="handleEdit(scope.$index, scope.row)">编辑
+          </el-button>
+          <el-button
+              size="mini"
+              type="danger"
+              @click="handleDelete(scope.$index, scope.row)">删除
           </el-button>
         </template>
       </el-table-column>
@@ -79,8 +84,26 @@
         :is-drawer-dialog="isDrawerDialog"
     >
       <div slot="content">
-        <el-form-item label="栏目：" prop="title">
-          <el-input v-model="formData.title" placeholder="请输入内容"></el-input>
+        <el-form-item label="用户名称" prop="username">
+          <el-input v-model="formData.username" placeholder="请设置用户名称"></el-input>
+        </el-form-item>
+        <el-form-item label="密码" prop="username">
+          <el-input v-model="formData.password" placeholder="请设置用户密码"></el-input>
+        </el-form-item>
+        <el-form-item label="邮箱" prop="email">
+          <el-input v-model="formData.email" placeholder="请设置用户邮箱"></el-input>
+        </el-form-item>
+        <el-form-item label="权限" prop="permission">
+          <el-switch
+              v-model="formData.permission"
+
+              active-color="#13ce66"
+              inactive-color="#ff4949"
+              active-value="管理员"
+              inactive-value="普通用户"
+              style="padding-left: 10px"
+          >
+          </el-switch>
         </el-form-item>
       </div>
     </CustomDrawer>
@@ -92,13 +115,14 @@
 //引入混入
 import create from "@/mixins/create"
 
+
 export default {
   data() {
     return {
       api: {
-        pageUrl: "/word-info/pageArticle",
-        saveUrl: "/word-info/saveTitle",
-        delUrl: "/word-info/deleteTitle",
+        pageUrl: "/user-info/pageUser",
+        saveUrl: "/user-info/save",
+        delUrl: "/user-info/delBatch",
       },
     }
   },

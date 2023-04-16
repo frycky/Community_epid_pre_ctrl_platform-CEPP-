@@ -5,10 +5,30 @@
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.agentp.cepp.entity.WordInfo">
         <result column="id" property="id" />
-        <result column="status" property="status" />
-        <result column="date" property="date" />
+        <result column="create_time" property="createTime" />
+        <result column="user_id" property="userId" />
+        <result column="update_time" property="updateTime" />
         <result column="title" property="title" />
         <result column="article" property="article" />
+        <result column="status" property="status" />
+        <result column="views" property="views" />
     </resultMap>
+
+<!--    <select id="selectUW" resultType="com.agentp.cepp.entity.WordInfo">-->
+<!--        SELECT word_info.id, user_info.username, word_info.create_time, word_info.title, word_info.status-->
+<!--        FROM word_info-->
+<!--        JOIN user_info ON word_info.user_id = user_info.id-->
+<!--        WHERE word_info.user_id = user_info.id-->
+<!--    </select>-->
+
+    <select id="selectUW" resultType="com.agentp.cepp.entity.WordInfo">
+        SELECT word_info.id, user_info.username, word_info.create_time, word_info.title, word_info.status
+        FROM word_info
+        JOIN user_info ON word_info.user_id = user_info.id
+        WHERE word_info.user_id = user_info.id
+        <if test="getTitle">
+            and word_info.title LIKE #{title}
+        </if>
+    </select>
 
 </mapper>

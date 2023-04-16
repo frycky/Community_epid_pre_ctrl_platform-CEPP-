@@ -5,10 +5,12 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import lombok.Getter;
 
 @Getter
-public enum StatusType {
+public enum ArticleStatusType {
 
-    No(0, "禁用"),
-    Yes(1, "启用");
+    REVIEWING(0,"审核中"),
+    NORMAL(1,"已发布"),
+    DELETED(2,"已删除"),
+    BANNED(3,"已封禁");
 
     /**
      * 存到数据库的值
@@ -23,7 +25,7 @@ public enum StatusType {
     private String name;
 
 
-    StatusType(Integer key, String name) {
+    ArticleStatusType(Integer key, String name) {
         this.key = key;
         this.name = name;
     }

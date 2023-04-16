@@ -4,11 +4,12 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.agentp.cepp.entity.UserInfo">
-        <id column="user_id" property="userId" />
+        <result column="id" property="id" />
         <result column="username" property="username" />
         <result column="password" property="password" />
         <result column="email" property="email" />
         <result column="create_time" property="createTime" />
+        <result column="permission" property="permission" />
     </resultMap>
 
 </mapper>

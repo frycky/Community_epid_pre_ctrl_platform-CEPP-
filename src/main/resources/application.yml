@@ -19,3 +19,4 @@ mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
   type-enums-package: com.agentp.cepp.enums
+  mapper-locations: classpath:/mapper/*Mapper.xml

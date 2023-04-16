@@ -18,7 +18,8 @@
       </div>
 
       <div class="drawer_footer">
-        <el-button type="primary" @click="submitForm('formData')" style="padding-left: 20px;margin: 10px">提交</el-button>
+        <el-button type="primary" @click="submitForm('formData')" style="padding-left: 20px;margin: 10px">提交
+        </el-button>
         <el-button type="danger" @click="cancel('formData')" style="padding-left: 20px ;margin: 10px">取消</el-button>
       </div>
 
@@ -46,13 +47,17 @@ export default {
         return {}
       }
     },
+    permission: {
+      type: Number,
+      default: 0
+    },
     size: {
       type: [Number, String],
       default: "30%"
     },
-    direction:{
-      type:String,
-      default:"btt"
+    direction: {
+      type: String,
+      default: "btt"
     }
 
   },

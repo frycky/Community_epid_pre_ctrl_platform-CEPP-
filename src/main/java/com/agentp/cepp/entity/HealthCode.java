@@ -1,10 +1,8 @@
 package com.agentp.cepp.entity;
 
 
-import com.agentp.cepp.enums.StatusType;
-import com.baomidou.mybatisplus.annotation.IdType;
+import com.agentp.cepp.enums.ArticleStatusType;
 import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
 import io.swagger.annotations.ApiModel;
@@ -40,7 +38,7 @@ public class HealthCode extends BaseEntity {
 
     @ApiModelProperty("状态")
     @TableField("status")
-    private StatusType status;
+    private ArticleStatusType status;
 
 
 }

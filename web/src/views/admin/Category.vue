@@ -39,7 +39,7 @@
           show-overflow-tooltip>
       </el-table-column>
       <el-table-column
-          prop="statusType"
+          prop="status"
           label="状态"
           show-overflow-tooltip>
       </el-table-column>

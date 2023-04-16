@@ -20,6 +20,10 @@ public class SpringMvcConfig implements WebMvcConfigurer {
                         "/user-info/save",
                         "/user-info/page1",
                         "/user-info/page2",
+                        "/user-info/list",
+                        "/user-info/pageUser",
+                        "/user-info/updateUser",
+                        "/user-info/delBatch",
                         "/article/detail",
                         //TODO 开发暂时允许访问
                         "/doc.html",
@@ -31,6 +35,7 @@ public class SpringMvcConfig implements WebMvcConfigurer {
                         "/word-info/saveTitle",
                         "/word-info/deleteTitle",
                         "/word-info/pageTitle",
+                        "/word-info/pageArticle",
 //
                         "/swagger-ui/**",
                         "/swagger-ui.html",

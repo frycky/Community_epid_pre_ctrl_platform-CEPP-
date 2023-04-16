@@ -30,6 +30,11 @@ const routes = [
         name:"Category",
         component: ()=> import('../views/admin/Category')
       },
+      {
+        path: "/user",
+        name:"User",
+        component: ()=> import('../views/admin/User')
+      },
     ]
   },
   {

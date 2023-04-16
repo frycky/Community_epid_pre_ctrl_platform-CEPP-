@@ -19,16 +19,22 @@ const create = {
                 //分页大小
                 pageSize: 10,
                 //总条数
-                total: 0,//数组总条数
+                total: 0,
             },
             //搜索参数
             searchForm: {
                 title: "",
+                username:"",
             },
-            ids: [],//删除的id
+            //删除的id
+            ids: [],
+            //新增
             formData: {
                 id: null,
-                title: "",//新增
+                title: "",
+                username:"",
+                password:"",
+                permission:0,
             },
             ruleForm: {
                 title: [
@@ -175,6 +181,8 @@ const create = {
                 this.$refs.multipleTable.clearSelection();
             });
         },
+
+
     }
 }
 
