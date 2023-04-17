@@ -21,10 +21,15 @@ const routes = [
         component: ()=> import('../views/admin/Test2')
       },
       {
+        path: "/article",
+        name:"Article",
+        component: ()=> import('../views/admin/Article')
+      },
+      {
         path: "/category",
         name:"Category",
         component: ()=> import('../views/admin/Category')
-      }
+      },
     ]
   },
   {

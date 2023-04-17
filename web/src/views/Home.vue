@@ -22,14 +22,17 @@
               <el-menu-item index="1-3">
                 <router-link tag="div" to="/category">栏目管理</router-link>
               </el-menu-item>
+              <el-menu-item index="1-4">
+                <router-link tag="div" to="/article">文章管理</router-link>
+              </el-menu-item>
 
             </el-menu-item-group>
             <el-menu-item-group title="分组2">
-              <el-menu-item index="1-4">选项3</el-menu-item>
+              <el-menu-item index="1-5">选项3</el-menu-item>
             </el-menu-item-group>
-            <el-submenu index="1-5">
+            <el-submenu index="1-6">
               <template slot="title">选项4</template>
-              <el-menu-item index="1-5-1">选项4-1</el-menu-item>
+              <el-menu-item index="1-6-1">选项4-1</el-menu-item>
             </el-submenu>
           </el-submenu>
           <el-submenu index="2">

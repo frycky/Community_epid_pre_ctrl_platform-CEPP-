@@ -14,6 +14,15 @@ console.log("环境",process.env.NODE_ENV)
 console.log("服务器",process.env.VUE_APP_SERVER)
 console.log(process.env)
 
+import CustomPages from "@/components/CustomPages";
+Vue.component("CustomPages",CustomPages)
+
+import CustomDrawer from "@/components/CustomDrawer";
+Vue.component("CustomDrawer",CustomDrawer)
+
+
+
+
 
 new Vue({
   router,
