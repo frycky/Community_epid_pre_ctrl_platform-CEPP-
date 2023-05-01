@@ -39,20 +39,23 @@
           show-overflow-tooltip>
       </el-table-column>
       <el-table-column
+          prop="username"
+          label="用户"
+          show-overflow-tooltip>
+      </el-table-column>
+      <el-table-column
           prop="status"
           label="状态"
           show-overflow-tooltip>
+        <template v-slot="scope">
+          <span :class="fontLightClass(scope.row.status)">{{scope.row.status}}</span>
+        </template>
       </el-table-column>
       <el-table-column label="操作">
         <template slot-scope="scope">
           <el-button
               size="mini"
-              @click="handleEdit(scope.$index, scope.row)">编辑
-          </el-button>
-          <el-button
-              size="mini"
-              type="danger"
-              @click="handleDelete(scope.$index, scope.row)">删除
+              @click="handleEdit(scope.$index, scope.row)">详情
           </el-button>
         </template>
       </el-table-column>
@@ -92,21 +95,48 @@
 //引入混入
 import create from "@/mixins/create"
 
-
 export default {
   data() {
     return {
       api: {
-        pageUrl: "/word-info/pageTitle",
+        pageUrl: "/word-info/pageArticle",
         saveUrl: "/word-info/saveTitle",
         delUrl: "/word-info/deleteTitle",
       },
     }
   },
   mixins: [create],
+  methods:{
+    fontLightClass(status){
+      if(status == "已删除"){
+        return 'fRed'
+      }
+      if(status == "已封禁"){
+        return 'fGrey'
+      }
+      if(status == "审核中"){
+        return 'fBlue'
+      }
+      if(status == "已发布"){
+        return 'fGreen'
+      }
+    }
+  }
 };
 </script>
 
 <style scoped>
+.fRed{
+  color: red;
+}
+.fGrey{
+  color: #B3C0D1;
+}
+.fBlue{
+  color: deepskyblue;
+}
+.fGreen{
+  color: limegreen;
+}
 
 </style>

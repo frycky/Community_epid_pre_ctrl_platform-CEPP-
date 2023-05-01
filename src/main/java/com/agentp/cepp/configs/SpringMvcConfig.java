@@ -25,6 +25,8 @@ public class SpringMvcConfig implements WebMvcConfigurer {
                         "/user-info/updateUser",
                         "/user-info/delBatch",
                         "/article/detail",
+                        "/menu-list/**",
+                        "/**",
                         //TODO 开发暂时允许访问
                         "/doc.html",
                         "/user-info/getById",

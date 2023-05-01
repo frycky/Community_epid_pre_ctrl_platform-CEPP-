@@ -1,75 +1,3 @@
-<!--<template>-->
-<!--  <div class="box">-->
-<!--    <el-form :model="formModel" :rules="rules" ref="ruleForm" label-width="80px">-->
-<!--      <el-form-item label="用户名" prop="username">-->
-<!--        <el-input v-model="formModel.username"></el-input>-->
-<!--      </el-form-item>-->
-<!--      <el-form-item label="密码" prop="password">-->
-<!--        <el-input type="password" v-model="formModel.password"></el-input>-->
-<!--      </el-form-item>-->
-<!--      <el-form-item>-->
-<!--        <el-button type="primary" @click="onSubmit('ruleForm')">登录</el-button>-->
-<!--        <el-button>取消</el-button>-->
-<!--      </el-form-item>-->
-<!--    </el-form>-->
-<!--  </div>-->
-<!--</template>-->
-<!--<script>-->
-<!--export default {-->
-<!--  data() {-->
-<!--    return {-->
-<!--      formModel: {-->
-<!--        username:"",-->
-<!--        password:""-->
-<!--      },-->
-<!--      rules:{-->
-<!--        username: [-->
-<!--          {-->
-<!--            required:true,message:'请输入用户名',trigger:'blur'-->
-<!--          }-->
-<!--        ],-->
-<!--        password:[-->
-<!--          {required:true,message:'请输入正确的密码',trigger:'blur'}-->
-<!--        ]-->
-<!--      }-->
-<!--    }-->
-<!--  },-->
-<!--  methods: {-->
-<!--    onSubmit(formName){-->
-<!--      this.$refs[formName].validate((valid)=>{-->
-<!--        if(valid){-->
-<!--          console.log(this.formModel)-->
-<!--          this.$axios.post("/user-info/postlogin",this.formModel).then(res=>{-->
-<!--            console.log(res)-->
-<!--            if(res.code===200){-->
-<!--              this.$message({-->
-<!--                message:"登录成功，正在跳转",-->
-<!--                type:"success"-->
-<!--              })-->
-<!--              let userInfo = res.data-->
-<!--              localStorage.setItem("userInfo",JSON.stringify(userInfo))-->
-<!--              localStorage.setItem("token",userInfo.token)-->
-
-<!--              setTimeout(()=>{-->
-<!--                this.$router.push({path:"about"})-->
-<!--              },3000)-->
-<!--            }-->
-<!--          })-->
-<!--        }else {-->
-<!--          console.log("error submit!!")-->
-<!--          return false;-->
-<!--        }-->
-<!--      });-->
-<!--    }-->
-<!--  }-->
-<!--}-->
-<!--</script>-->
-<!--<style scoped>-->
-<!--.box{-->
-<!--  width: 450px;-->
-<!--}-->
-<!--</style>-->
-
 <template>
   <div class="login-wrap">
     <el-form class="login-container" :model="formModel" :rules="rules" ref="ruleForm">
@@ -131,7 +59,7 @@ export default {
               localStorage.setItem("token",userInfo.token)
 
               setTimeout(()=>{
-                this.$router.push({path:"about"})
+                this.$router.push({path:"/"})
               },3000)
             }
           })

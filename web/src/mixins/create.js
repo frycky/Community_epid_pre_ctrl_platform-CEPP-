@@ -1,4 +1,5 @@
 //定义混入
+
 const create = {
     data() {
         return {
@@ -35,12 +36,18 @@ const create = {
                 username:"",
                 password:"",
                 permission:0,
+                path:"",
             },
             ruleForm: {
                 title: [
                     {required: true, message: '请输入栏目名称', trigger: 'blur'},
                 ],
             },
+            dialogTableVisible: false,
+            id:0,
+            currentMenuList:[],
+            currentTable:[],
+
         }
     },
     created() {
@@ -51,6 +58,47 @@ const create = {
         formatDateC(row) {
             // 获取单元格数据
             let datedata = row.createTime
+            let dtc = new Date(datedata)
+            //获取月,默认月份从0开始
+            let dtuMonth = dtc.getMonth() + 1
+            //获取日
+            let dtuDay = dtc.getDate()
+            //处理1-9月前面加0
+            if (dtuMonth < 10) {
+                dtuMonth = "0" + (dtc.getMonth() + 1)
+            }
+            //处理1-9天前面加0
+            if (dtuDay < 10) {
+                dtuDay = "0" + dtc.getDate()
+            }
+            //获取小时
+            let dtuHours = dtc.getHours()
+            //处理1-9时前面加0
+            if (dtuHours < 10) {
+                dtuHours = "0" + dtc.getHours()
+            }
+            //获取分钟
+            let dtuMinutes = dtc.getMinutes()
+            //处理1-9分前面加0
+            if (dtuMinutes < 10) {
+                dtuMinutes = "0" + dtc.getMinutes()
+            }
+            //获取秒
+            let dtuSeconds = dtc.getSeconds()
+            //处理1-9秒前面加0
+            if (dtuSeconds < 10) {
+                dtuSeconds = "0" + dtc.getSeconds()
+            }
+            //组装年月日时分秒,按自己的要求来
+            return dtc.getFullYear() + "/" + dtuMonth + "/" + dtuDay + "  " + dtuHours + ":" + dtuMinutes + ":" + dtuSeconds
+            //+ " " + dtuHours + ":" + dtuMinutes + ":" + dtuSeconds
+        },
+        formatDateU(row) {
+            if (row.updateTime === null){
+                return null
+            }
+            // 获取单元格数据
+            let datedata = row.updateTime
             let dtc = new Date(datedata)
             //获取月,默认月份从0开始
             let dtuMonth = dtc.getMonth() + 1
@@ -181,7 +229,48 @@ const create = {
                 this.$refs.multipleTable.clearSelection();
             });
         },
+        //菜单管理
+        handleChange(id){
+            //清空数据
+            this.currentTable = []
+            this.currentMenuList = []
 
+            this.dialogTableVisible=true
+            this.id = id
+            this.getByTypeId(this.id)
+        },
+        submitEdit() {
+            let ids = []
+            this.currentTable.forEach(item => {
+                ids.push(item.id)
+            })
+            let data = {
+                typeId: this.id,
+                menuIdList: ids
+            }
+            console.log(ids)
+            this.$axios.post("/user_type/saveTypeAndMenu", data).then((res) => {
+                if (res.code === 200) {
+                    this.isDrawerDialog = false
+                    this.$message({
+                        message: res.msg,
+                        type: 'success'
+                    });
+                    this.getList()
+                    this.getMenuList()
+
+                }
+            })
+            this.dialogTableVisible = false
+        },
+        getMenuList() {
+            this.$axios.get("/menu-list/list").then((res) => {
+                this.menuList = res.data
+            })
+        },
+        selectionTableChange(e) {
+            this.currentTable=e
+        },
 
     }
 }

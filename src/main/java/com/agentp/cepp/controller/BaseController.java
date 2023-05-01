@@ -19,6 +19,15 @@ public class BaseController {
     WordInfoService wordInfoService;
     @Autowired
     CategoryInfoService categoryInfoService;
+
+    @Autowired
+    UserTypeService userTypeService;
+
+    @Autowired
+    MenuListService menuListService;
+    @Autowired
+    TypeMenuService typeMenuService;
+
     @Autowired
     WordInfoMapper wordInfoMapper;
 

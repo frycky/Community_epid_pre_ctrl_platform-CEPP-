@@ -29,30 +29,41 @@
       </el-table-column>
       <el-table-column
           prop="createTime"
-          label="发布时间"
+          label="创建时间"
           width="170"
           :formatter="formatDateC">
       </el-table-column>
       <el-table-column
+          prop="updateTime"
+          label="更新时间"
+          width="170"
+          :formatter="formatDateU">
+      </el-table-column>
+      <el-table-column
           prop="title"
-          label="标题"
+          label="菜单名称"
           show-overflow-tooltip>
       </el-table-column>
       <el-table-column
-          prop="username"
-          label="用户"
+          prop="path"
+          label="路径"
           show-overflow-tooltip>
       </el-table-column>
       <el-table-column
-          prop="status"
-          label="状态"
+          prop="permission"
+          label="权限"
           show-overflow-tooltip>
       </el-table-column>
       <el-table-column label="操作">
         <template slot-scope="scope">
           <el-button
               size="mini"
-              @click="handleEdit(scope.$index, scope.row)">详情
+              @click="handleEdit(scope.$index, scope.row)">编辑
+          </el-button>
+          <el-button
+              size="mini"
+              type="danger"
+              @click="handleDelete(scope.$index, scope.row)">删除
           </el-button>
         </template>
       </el-table-column>
@@ -79,8 +90,22 @@
         :is-drawer-dialog="isDrawerDialog"
     >
       <div slot="content">
-        <el-form-item label="栏目：" prop="title">
+        <el-form-item label="菜单名：" prop="title">
           <el-input v-model="formData.title" placeholder="请输入内容"></el-input>
+        </el-form-item>
+        <el-form-item label="路径：" prop="path">
+          <el-input v-model="formData.path" placeholder="请输入内容"></el-input>
+        </el-form-item>
+        <el-form-item label="菜单权限：" prop="permission">
+          <el-switch
+              v-model="formData.permission"
+              active-color="#13ce66"
+              inactive-color="#B3C0D1"
+              active-value="管理员"
+              inactive-value="普通用户"
+              style="padding-left: 10px"
+          >
+          </el-switch>
         </el-form-item>
       </div>
     </CustomDrawer>
@@ -92,13 +117,14 @@
 //引入混入
 import create from "@/mixins/create"
 
+
 export default {
   data() {
     return {
       api: {
-        pageUrl: "/word-info/pageArticle",
-        saveUrl: "/word-info/saveTitle",
-        delUrl: "/word-info/deleteTitle",
+        pageUrl: "/menu-list/pageMenu",
+        saveUrl: "/menu-list/save",
+        delUrl: "/menu-list/delBatch",
       },
     }
   },
@@ -107,5 +133,6 @@ export default {
 </script>
 
 <style scoped>
+
 
 </style>

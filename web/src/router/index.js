@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Layout from '../views/Layout.vue'
 
 Vue.use(VueRouter)
 
@@ -8,7 +8,7 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home,
+    component: Layout,
     children:[
       {
         path: "/test",
@@ -21,19 +21,29 @@ const routes = [
         component: ()=> import('../views/admin/Test2')
       },
       {
-        path: "/article",
-        name:"Article",
-        component: ()=> import('../views/admin/Article')
+        path: "/articleManage",
+        name:"ArticleManage",
+        component: ()=> import('../views/admin/articleManage')
       },
       {
-        path: "/category",
-        name:"Category",
-        component: ()=> import('../views/admin/Category')
+        path: "/categoryManage",
+        name:"CategoryManage",
+        component: ()=> import('../views/admin/categoryManage')
       },
       {
-        path: "/user",
-        name:"User",
-        component: ()=> import('../views/admin/User')
+        path: "/userManage",
+        name:"UserManage",
+        component: ()=> import('../views/admin/userManage')
+      },
+      {
+        path: "/menuManage",
+        name:"MenuManage",
+        component: ()=> import('../views/admin/menuManage')
+      },
+      {
+        path: "/userTypeManage",
+        name:"UserTypeManage",
+        component: ()=> import('../views/admin/userTypeManage')
       },
     ]
   },

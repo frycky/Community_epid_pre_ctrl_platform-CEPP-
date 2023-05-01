@@ -89,12 +89,15 @@ public class UserInfoController extends BaseController {
                 .last("limit 1");
         UserInfo userone = userInfoService.getOne(wrapper);
         if(userone!=null){
+
+
             //生成jwt
             String token = JwtUtils.generateToken(userone);
             HashMap<Object, Object> map = new HashMap<>();
             map.put("token",token);
             map.put("username",userone.getUsername());
             map.put("password",userone.getPassword());
+            map.put("permission",userone.getPermission());
             return Result.success(map);
         }else {
             throw new CustomException("请检查用户名和密码是否正确");
@@ -140,7 +143,6 @@ public class UserInfoController extends BaseController {
     @PostMapping("/pageUser")
     public Result pageUser(@RequestBody UserInfoDto userInfoDto){
         LambdaQueryWrapper<UserInfo> wrapper = new LambdaQueryWrapper<>();
-        QueryWrapper<UserInfo> queryWrapper = new QueryWrapper<>();
         //模糊查询like
         if(userInfoDto.getUsername()!=null&& !"".equals(userInfoDto.getUsername())){
             wrapper.like(UserInfo::getUsername,userInfoDto.getUsername());

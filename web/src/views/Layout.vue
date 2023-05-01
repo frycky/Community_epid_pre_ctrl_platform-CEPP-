@@ -20,53 +20,59 @@
               </el-menu-item>
 
               <el-menu-item index="1-3">
-                <router-link tag="div" to="/category">栏目管理</router-link>
+                <router-link tag="div" to="/categoryManage">栏目管理</router-link>
               </el-menu-item>
               <el-menu-item index="1-4">
-                <router-link tag="div" to="/article">文章管理</router-link>
+                <router-link tag="div" to="/articleManage">文章管理</router-link>
               </el-menu-item>
               <el-menu-item index="1-5">
-                <router-link tag="div" to="/user">用户管理</router-link>
+                <router-link tag="div" to="/userManage">用户管理</router-link>
               </el-menu-item>
+              <el-menu-item index="1-6">
+                <router-link tag="div" to="/userTypeManage">用户类型</router-link>
+              </el-menu-item>
+              <el-menu-item index="1-7">
+                <router-link tag="div" to="/menuManage">菜单管理</router-link>
+              </el-menu-item>
+            </el-menu-item-group>
 
-            </el-menu-item-group>
-            <el-menu-item-group title="分组2">
-              <el-menu-item index="1-6">选项3</el-menu-item>
-            </el-menu-item-group>
-            <el-submenu index="1-7">
-              <template slot="title">选项4</template>
-              <el-menu-item index="1-7-1">选项4-1</el-menu-item>
-            </el-submenu>
-          </el-submenu>
-          <el-submenu index="2">
-            <template slot="title"><i class="el-icon-menu"></i>导航二</template>
-            <el-menu-item-group>
-              <template slot="title">分组一</template>
-              <el-menu-item index="2-1">选项1</el-menu-item>
-              <el-menu-item index="2-2">选项2</el-menu-item>
-            </el-menu-item-group>
-            <el-menu-item-group title="分组2">
-              <el-menu-item index="2-3">选项3</el-menu-item>
-            </el-menu-item-group>
-            <el-submenu index="2-4">
-              <template slot="title">选项4</template>
-              <el-menu-item index="2-4-1">选项4-1</el-menu-item>
-            </el-submenu>
-          </el-submenu>
-          <el-submenu index="3">
-            <template slot="title"><i class="el-icon-setting"></i>导航三</template>
-            <el-menu-item-group>
-              <template slot="title">分组一</template>
-              <el-menu-item index="3-1">选项1</el-menu-item>
-              <el-menu-item index="3-2">选项2</el-menu-item>
-            </el-menu-item-group>
-            <el-menu-item-group title="分组2">
-              <el-menu-item index="3-3">选项3</el-menu-item>
-            </el-menu-item-group>
-            <el-submenu index="3-4">
-              <template slot="title">选项4</template>
-              <el-menu-item index="3-4-1">选项4-1</el-menu-item>
-            </el-submenu>
+<!--            <el-menu-item-group title="分组2">-->
+<!--              <el-menu-item index="1-6">选项3</el-menu-item>-->
+<!--            </el-menu-item-group>-->
+<!--            <el-submenu index="1-7">-->
+<!--              <template slot="title">选项4</template>-->
+<!--              <el-menu-item index="1-7-1">选项4-1</el-menu-item>-->
+<!--            </el-submenu>-->
+<!--          </el-submenu>-->
+<!--          <el-submenu index="2">-->
+<!--            <template slot="title"><i class="el-icon-menu"></i>导航二</template>-->
+<!--            <el-menu-item-group>-->
+<!--              <template slot="title">分组一</template>-->
+<!--              <el-menu-item index="2-1">选项1</el-menu-item>-->
+<!--              <el-menu-item index="2-2">选项2</el-menu-item>-->
+<!--            </el-menu-item-group>-->
+<!--            <el-menu-item-group title="分组2">-->
+<!--              <el-menu-item index="2-3">选项3</el-menu-item>-->
+<!--            </el-menu-item-group>-->
+<!--            <el-submenu index="2-4">-->
+<!--              <template slot="title">选项4</template>-->
+<!--              <el-menu-item index="2-4-1">选项4-1</el-menu-item>-->
+<!--            </el-submenu>-->
+<!--          </el-submenu>-->
+<!--          <el-submenu index="3">-->
+<!--            <template slot="title"><i class="el-icon-setting"></i>导航三</template>-->
+<!--            <el-menu-item-group>-->
+<!--              <template slot="title">分组一</template>-->
+<!--              <el-menu-item index="3-1">选项1</el-menu-item>-->
+<!--              <el-menu-item index="3-2">选项2</el-menu-item>-->
+<!--            </el-menu-item-group>-->
+<!--            <el-menu-item-group title="分组2">-->
+<!--              <el-menu-item index="3-3">选项3</el-menu-item>-->
+<!--            </el-menu-item-group>-->
+<!--            <el-submenu index="3-4">-->
+<!--              <template slot="title">选项4</template>-->
+<!--              <el-menu-item index="3-4-1">选项4-1</el-menu-item>-->
+<!--            </el-submenu>-->
           </el-submenu>
         </el-menu>
       </el-aside>
@@ -98,39 +104,13 @@ export default {
   data() {
     return {
       text:"",
-      tableData: [{
-        date: '2016-05-03',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1518 弄'
-      }, {
-        date: '2016-05-02',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1518 弄'
-      }, {
-        date: '2016-05-04',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1518 弄'
-      }, {
-        date: '2016-05-01',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1518 弄'
-      }, {
-        date: '2016-05-08',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1518 弄'
-      }, {
-        date: '2016-05-06',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1518 弄'
-      }, {
-        date: '2016-05-07',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1518 弄'
-      }],
+      tableData: [],
       multipleSelection: []
     }
   },
   methods: {
+    //根据用户权限获取菜单栏
+
     toggleSelection(rows) {
       if (rows) {
         rows.forEach(row => {

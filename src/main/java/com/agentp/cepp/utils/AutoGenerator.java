@@ -32,7 +32,10 @@ public class AutoGenerator {
 //        tables.add("resident_info");
 //        tables.add("health_code");
 //        tables.add("epidemic_info");
-        tables.add("word_info");
+//        tables.add("word_info");
+//        tables.add("menu_info");
+//        tables.add("menu_list");
+        tables.add("type_menu");
 
 
         FastAutoGenerator.create(URL, USERNAME, PASSWORD)

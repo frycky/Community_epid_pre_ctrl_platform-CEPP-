@@ -1,5 +1,6 @@
 package com.agentp.cepp.vo;
 
+import com.agentp.cepp.dto.PageInfo;
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -15,16 +16,13 @@ import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 
 @Data
-public class UserInfoVO {
+public class UserInfoVO{
     @ApiModelProperty("主键")
     @TableId(value = "id", type = IdType.AUTO)
     private Integer userId;
 
     @ApiModelProperty("用户名")
     private String username;
-
-    @ApiModelProperty("密码")
-    private String password;
 
     @ApiModelProperty("邮箱")
     private String email;

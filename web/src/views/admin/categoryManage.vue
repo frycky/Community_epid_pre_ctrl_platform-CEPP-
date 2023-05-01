@@ -2,7 +2,7 @@
   <div>
     <div class="pb10px">
       <!--@input="handleSearch"与@click="handleSearch"相绑定，实现输入即搜索-->
-      <el-input v-model="searchForm.username" @input="handleSearch" class="input" clearable placeholder="请输入用户名"
+      <el-input v-model="searchForm.title" @input="handleSearch" class="input" clearable placeholder="请输入标题"
                 size="small"></el-input>
       <el-button type="primary" icon="el-icon-search" size="small" class="mr10px" @click="handleSearch">搜索</el-button>
     </div>
@@ -29,24 +29,22 @@
       </el-table-column>
       <el-table-column
           prop="createTime"
-          label="创建时间"
+          label="发布时间"
           width="170"
           :formatter="formatDateC">
       </el-table-column>
       <el-table-column
-          prop="username"
-          label="用户"
+          prop="title"
+          label="标题"
           show-overflow-tooltip>
       </el-table-column>
       <el-table-column
-          prop="email"
-          label="邮箱"
+          prop="status"
+          label="状态"
           show-overflow-tooltip>
-      </el-table-column>
-      <el-table-column
-          prop="permission"
-          label="权限"
-          show-overflow-tooltip>
+        <template v-slot="scope">
+          <span :class="fontLightClass(scope.row.status)">{{scope.row.status}}</span>
+        </template>
       </el-table-column>
       <el-table-column label="操作">
         <template slot-scope="scope">
@@ -84,26 +82,8 @@
         :is-drawer-dialog="isDrawerDialog"
     >
       <div slot="content">
-        <el-form-item label="用户名称" prop="username">
-          <el-input v-model="formData.username" placeholder="请设置用户名称"></el-input>
-        </el-form-item>
-        <el-form-item label="密码" prop="username">
-          <el-input v-model="formData.password" placeholder="请设置用户密码"></el-input>
-        </el-form-item>
-        <el-form-item label="邮箱" prop="email">
-          <el-input v-model="formData.email" placeholder="请设置用户邮箱"></el-input>
-        </el-form-item>
-        <el-form-item label="权限" prop="permission">
-          <el-switch
-              v-model="formData.permission"
-
-              active-color="#13ce66"
-              inactive-color="#ff4949"
-              active-value="管理员"
-              inactive-value="普通用户"
-              style="padding-left: 10px"
-          >
-          </el-switch>
+        <el-form-item label="栏目：" prop="title">
+          <el-input v-model="formData.title" placeholder="请输入内容"></el-input>
         </el-form-item>
       </div>
     </CustomDrawer>
@@ -120,16 +100,44 @@ export default {
   data() {
     return {
       api: {
-        pageUrl: "/user-info/pageUser",
-        saveUrl: "/user-info/save",
-        delUrl: "/user-info/delBatch",
+        pageUrl: "/word-info/pageTitle",
+        saveUrl: "/word-info/saveTitle",
+        delUrl: "/word-info/deleteTitle",
       },
     }
   },
   mixins: [create],
+  methods:{
+    fontLightClass(status){
+      if(status == "已删除"){
+        return 'fRed'
+      }
+      if(status == "已封禁"){
+        return 'fGrey'
+      }
+      if(status == "审核中"){
+        return 'fBlue'
+      }
+      if(status == "已发布"){
+        return 'fGreen'
+      }
+    }
+  }
 };
 </script>
 
 <style scoped>
+.fRed{
+  color: red;
+}
+.fGrey{
+  color: #B3C0D1;
+}
+.fBlue{
+  color: deepskyblue;
+}
+.fGreen{
+  color: limegreen;
+}
 
 </style>
